@@ -1,4 +1,6 @@
 :root {
+	--max-width: 800px;
+
 	--primary-color-light: hsl(158, 83%, 54%);
 	--primary-color: hsl(158, 83%, 34%);
 	--primary-color-hover: hsl(158, 83%, 24%);
@@ -22,8 +24,11 @@ body {
 }
 
 main {
+	position: relative;
+	max-width: var(--max-width);
 	width: 100%;
 	height: calc(100% - var(--footer-height));
+	margin: 0 auto;
 
 	display: flex;
 	justify-content: center;
