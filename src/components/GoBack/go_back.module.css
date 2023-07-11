@@ -1,0 +1,28 @@
+.go_back {
+	position: absolute;
+	top: 1em;
+	left: 1em;
+	width: max-content;
+	z-index: 100;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1em;
+
+	padding: 1em 1.5em;
+
+	background-color: #fff2;
+	border: none;
+	outline: none;
+	color: #fff;
+	border-radius: 1em;
+
+	cursor: pointer;
+
+	transition: var(--transition-ease) all 0.2s;
+}
+
+.go_back:hover {
+	background-color: #fff4;
+}
