@@ -3,7 +3,9 @@
 	--primary-color: hsl(158, 83%, 34%);
 	--primary-color-hover: hsl(158, 83%, 24%);
 	--background-color: #36393f;
+
 	--footer-color: #424242;
+	--footer-height: 4em;
 }
 
 * {
@@ -17,6 +19,15 @@ body {
 	height: 100vh;
 	height: 100dvh;
 	background-color: var(--background-color);
+}
+
+main {
+	width: 100%;
+	height: calc(100% - var(--footer-height));
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 ::-webkit-scrollbar {
