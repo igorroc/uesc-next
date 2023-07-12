@@ -167,6 +167,7 @@ export async function getProfessors() {
 
 export async function addProfessor(professor: TProfessor) {
 	const response = await addDocument("professors", professor)
+	console.log(response)
 	if (!response.error && response.result) {
 		return response.result
 	}

@@ -5,7 +5,7 @@ import React, { useEffect, useRef } from "react"
 import styles from "./professor_form.module.css"
 import CustomLink from "../CustomLink"
 import { TCourse } from "@/types/course"
-import { getCourses } from "@/hooks/useDatabase"
+import { addProfessor, getCourses } from "@/hooks/useDatabase"
 
 enum Status {
 	DEFAULT = "Adicionar",
@@ -16,25 +16,76 @@ enum Status {
 
 export default function ProfessorFormAdmin() {
 	const form = useRef<HTMLFormElement>(null)
+	const adminForm = useRef<HTMLFormElement>(null)
 	const [status, setStatus] = React.useState(Status.DEFAULT)
 	const [courses, setCourses] = React.useState<TCourse[]>([])
+	const [loggedIn, setLoggedIn] = React.useState(false)
 
-	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+	async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault()
 
 		if (!form.current) return console.error("form.current is null")
 
 		// get data from form
-		const data = new FormData(form.current)
+		const data = {
+			name: form.current.professor_name.value,
+			email: form.current.professor_email.value,
+			course: form.current.professor_course.value,
+			nicknames: form.current.professor_nicknames.value,
+		}
 
-		console.log(data)
+		const res = await addProfessor(data)
 
-		setStatus(Status.PENDING)
+		if (res) {
+			alert("Professor adicionado com sucesso")
+			form.current.reset()
+		} else {
+			alert("Erro ao adicionar professor")
+		}
+
+		setStatus(Status.DEFAULT)
+	}
+
+	function handleLogin(e: React.FormEvent<HTMLFormElement>) {
+		e.preventDefault()
+
+		if (!adminForm.current) return console.error("adminLogin.current is null")
+
+		// get data from form
+		const data = new FormData(adminForm.current)
+
+		// check if email and password are correct
+
+		const adminLogin = {
+			email: data.get("admin_email"),
+			password: data.get("admin_password"),
+		}
+
+		if (
+			adminLogin.email == process.env.NEXT_PUBLIC_ADMIN_EMAIL &&
+			adminLogin.password == process.env.NEXT_PUBLIC_ADMIN_PASSWORD
+		) {
+			setLoggedIn(true)
+			// reset form
+			adminForm.current.reset()
+		} else {
+			alert("Senha incorreta")
+		}
 	}
 
 	useEffect(() => {
 		getCourses().then(setCourses)
 	}, [])
+
+	if (!loggedIn) {
+		return (
+			<form ref={adminForm} className={styles.form} onSubmit={handleLogin}>
+				<input type="text" placeholder="Email" name="admin_email" required />
+				<input type="password" placeholder="Senha" name="admin_password" required />
+				<button type="submit">Entrar</button>
+			</form>
+		)
+	}
 
 	return status == Status.SUCCESS ? (
 		<div className={styles.success}>

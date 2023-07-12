@@ -1,5 +1,5 @@
 export type TProfessor = {
-	id: string
+	id?: string
 	name: string
 	email: string
 	nicknames: string[]
