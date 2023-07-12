@@ -1,7 +1,7 @@
 import Link from "next/link"
 import styles from "./page.module.css"
 
-import { BsFillEnvelopeFill } from "react-icons/bs"
+import { BsFillEnvelopeFill, BsGlobeAmericas } from "react-icons/bs"
 import { FaCalculator } from "react-icons/fa"
 
 export default function Home() {
@@ -15,6 +15,13 @@ export default function Home() {
 				<Link className={styles.links} href="./calculadora">
 					<FaCalculator size={48} />
 					<span> Calculadora de Notas </span>
+				</Link>
+				<Link
+					className={styles.links}
+					href="https://www.prograd.uesc.br/PortalSagres/Acesso.aspx"
+				>
+					<BsGlobeAmericas size={48} />
+					<span> Portal Sagres </span>
 				</Link>
 			</div>
 		</>

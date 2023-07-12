@@ -1,6 +1,6 @@
 .professor {
 	position: relative;
-	width: calc(100% - 60px);
+	width: calc(90% - 60px);
     max-width: calc(var(--max-width) - 60px);
 	height: fit-content;
 

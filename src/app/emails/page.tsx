@@ -5,9 +5,8 @@ import GoBack from "@/components/GoBack"
 import { BsFillPersonFill } from "react-icons/bs"
 
 import styles from "./emails.module.css"
-import ProfessorList from "@/components/ProfessorList"
-import ProfessorSearch from "@/components/ProfessorSearch"
 import Professors from "@/components/Professors"
+import CustomLink from "@/components/CustomLink"
 
 export default function Emails() {
 	return (
@@ -19,10 +18,10 @@ export default function Emails() {
 					<p>Não encontrou o seu professor?</p>
 					<p>Clique no botão baixo e adicionarei o mais rápido possível!</p>
 				</div>
-				<button className={styles.btn}>
+				<CustomLink href={"./emails/add"}>
 					<BsFillPersonFill />
 					Novo Professor
-				</button>
+				</CustomLink>
 			</div>
 		</>
 	)
