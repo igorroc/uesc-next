@@ -1,7 +1,13 @@
-.wrapper {
+.pageCenter {
 	height: 100%;
 	display: flex;
-	gap: 20px;
+	align-items: center;
+	justify-content: center;
+}
+
+.wrapper {
+	display: flex;
+	gap: 2em;
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
