@@ -1,0 +1,30 @@
+.professorList {
+	margin-top: 8em;
+}
+
+.mail,
+.preferencia {
+	color: #cacaca;
+
+	display: flex;
+	align-items: center;
+	gap: 20px;
+
+	text-transform: lowercase;
+
+	transition: all 300ms ease;
+
+	cursor: default;
+}
+
+.mail a {
+	color: white;
+	transition: all 300ms ease;
+
+	cursor: pointer;
+}
+
+.mail:hover,
+.mail:hover a {
+	color: var(--primary-color-light);
+}

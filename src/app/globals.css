@@ -33,7 +33,6 @@ body {
 
 main {
 	position: relative;
-	max-width: var(--max-width);
 	width: 100%;
 	flex: 1;
 
@@ -51,6 +50,13 @@ main {
 ::-webkit-scrollbar-thumb {
 	background-color: var(--primary-color); /* color of the scroll thumb */
 	border-radius: 20px; /* roundness of the scroll thumb */
+}
+
+.scrollableContent {
+	width: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+	max-height: 80vh;
 }
 
 @keyframes textGradientAnimation {
