@@ -7,13 +7,13 @@ import { BsFillPersonFill } from "react-icons/bs"
 import styles from "./emails.module.css"
 import ProfessorList from "@/components/ProfessorList"
 import ProfessorSearch from "@/components/ProfessorSearch"
+import Professors from "@/components/Professors"
 
 export default function Emails() {
 	return (
 		<>
 			<GoBack />
-			<ProfessorSearch />
-			<ProfessorList />
+			<Professors />
 			<div className={styles.notFound}>
 				<div className={styles.text}>
 					<p>Não encontrou o seu professor?</p>
