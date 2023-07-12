@@ -1,5 +1,5 @@
 import firebase_app from "../config"
-import { getFirestore, doc, getDoc, getDocs, collection } from "firebase/firestore"
+import { getFirestore, doc, getDoc, getDocs, collection, addDoc } from "firebase/firestore"
 
 const db = getFirestore(firebase_app)
 
@@ -26,6 +26,21 @@ export async function getCollection(collectionToSearch: string) {
 
 	try {
 		result = await getDocs(collectionRef)
+	} catch (e) {
+		error = e
+	}
+
+	return { result, error }
+}
+
+export async function addDocument(collectionToSearch: string, data: any) {
+	let docRef = collection(db, collectionToSearch)
+
+	let result = null
+	let error = null
+
+	try {
+		result = await addDoc(docRef, data)
 	} catch (e) {
 		error = e
 	}
