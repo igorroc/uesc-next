@@ -11,6 +11,10 @@ type ProfessorSearchProps = {
 }
 
 export default function ProfessorSearch(props: ProfessorSearchProps) {
+	function handleFilter() {
+		alert("Em desenvolvimento...")
+	}
+
 	return (
 		<div className={styles.searchBar}>
 			<div className={styles.busca}>
@@ -24,7 +28,7 @@ export default function ProfessorSearch(props: ProfessorSearchProps) {
 				/>
 				<FaUndoAlt className={styles.resetHidden} />
 			</div>
-			<button className={styles.filterButton}>
+			<button className={styles.filterButton} onClick={handleFilter}>
 				<FaFilter />
 				<span>Filtro</span>
 			</button>
