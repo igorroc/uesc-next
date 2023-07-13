@@ -3,7 +3,16 @@ const withPWA = require("next-pwa")({
 })
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+let nextConfig = {}
+
+if (process.env.NODE_ENV === "development") {
+	nextConfig = {}
+} else {
+	nextConfig = {
+		output: "export",
+		distDir: "dist",
+	}
+}
 
 module.exports = withPWA({
 	...nextConfig,
