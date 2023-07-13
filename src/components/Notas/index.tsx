@@ -6,6 +6,7 @@ import { Grade } from "@/types/grade"
 import Link from "next/link"
 import { AiFillInfoCircle } from "react-icons/ai"
 import { BiPlus, BiReset } from "react-icons/bi"
+import { FaTrash } from "react-icons/fa"
 
 export default function Notas() {
 	const [grades, setGrades] = React.useState<Grade[]>([])
@@ -19,7 +20,7 @@ export default function Notas() {
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		
+
 		console.log("add")
 		setGrades([...grades, newGrade])
 		setNewGrade({ value: null, weight: 10 } as Grade)
@@ -31,6 +32,10 @@ export default function Notas() {
 
 	function handleRemoveGrade(index: number) {
 		setGrades(grades.filter((_, i) => i !== index))
+	}
+
+	function handleReset() {
+		setGrades([])
 	}
 
 	const accumulated = grades.reduce((acc, grade) => {
@@ -58,7 +63,7 @@ export default function Notas() {
 			if (emptyGradesCount) {
 				if (media >= 7) {
 					setMessage(
-						`Mesmo se você tirar <u>0.0</u> nas notas coringa, você passa com <span class="${styles.mediaGreen}">${media}</span>.
+						`Mesmo se você tirar <u>0.0</u> nas notas coringa, você passa com <span class="${styles.mediaGreen}">${media.toFixed(2)}</span>.
 						<br/>
 						<span class="${styles.motivacional}">Cê é o bichão mesmo ein?</span>😎`
 					)
@@ -97,7 +102,7 @@ export default function Notas() {
 			} else {
 				let mediaComCor
 				if (media < 7) {
-					mediaComCor = `<span class="${styles.mediaRed}">${media}</span>`
+					mediaComCor = `<span class="${styles.mediaRed}">${media.toFixed(2)}</span>`
 					let quantoPrecisa = (5 - media * 0.6) / 0.4
 					let formatted = quantoPrecisa.toFixed(2)
 					let formattedComCor = `<span class="${styles.needsGrade}">${formatted}</span>`
@@ -128,36 +133,36 @@ export default function Notas() {
 						)
 					}
 				} else if (media > 10) {
-					mediaComCor = `<span class="${styles.mediaGreen}">${media}</span>`
+					mediaComCor = `<span class="${styles.mediaGreen}">${media.toFixed(2)}</span>`
 					setMessage(
 						`Não tenho ideia de como você conseguiu. Mas sua média é ${mediaComCor}! <span class="${styles.motivacional}">Você tá mais do que aprovado! Me ensina?</span> 🥺<span class="${styles.dedoEsquerdo}">👉</span><span class="${styles.dedoDireito}">👈</span>`
 					)
 				} else if (media == 10) {
-					mediaComCor = `<span class="${styles.mediaGreen}">${media}</span>`
+					mediaComCor = `<span class="${styles.mediaGreen}">${media.toFixed(2)}</span>`
 					setMessage(
 						`Você é o novo Einstein? Não? Por que sua média é ${mediaComCor}! <span class="${styles.motivacional}">Meteu essa?</span> 😎`
 					)
 				} else if (media >= 8.5) {
-					mediaComCor = `<span class="${styles.mediaGreen}">${media}</span>`
+					mediaComCor = `<span class="${styles.mediaGreen}">${media.toFixed(2)}</span>`
 					setMessage(
 						`Sua média é ${mediaComCor}! <span class="${styles.motivacional}">Continue assim e logo logo o 10.0 é seu!</span> 💪`
 					)
 				} else if (media > 7) {
-					mediaComCor = `<span class="${styles.mediaGreen}">${media}</span>`
+					mediaComCor = `<span class="${styles.mediaGreen}">${media.toFixed(2)}</span>`
 					setMessage(
 						`Sua média é ${mediaComCor}.
 						<br/>
 						<span class="${styles.motivacional}">Você está fazendo um ótimo trabalho!</span> 😉`
 					)
 				} else if (media == 7) {
-					mediaComCor = `<span class="${styles.mediaGreen}">${media}</span>`
+					mediaComCor = `<span class="${styles.mediaGreen}">${media.toFixed(2)}</span>`
 					setMessage(
 						`Sua média é exatamente ${mediaComCor}.
 						<br/>
 						<span class="${styles.motivacional}">Foi no limite, ein?</span> 😅`
 					)
 				} else {
-					mediaComCor = `<span class="${styles.mediaGreen}">${media}</span>`
+					mediaComCor = `<span class="${styles.mediaGreen}">${media.toFixed(2)}</span>`
 					setMessage(
 						`Sua média é ${mediaComCor}.
 						<br/>
@@ -188,15 +193,11 @@ export default function Notas() {
 						<div className={styles.info}>
 							Peso: <span className={styles.inputValor}>{grade.weight}</span>
 						</div>
-						<div className={styles.icon} onClick={() => handleRemoveGrade(index)}>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="24"
-								height="24"
-								viewBox="0 0 24 24"
-							>
-								<path d="M24 10h-24v4h24v-4z" />
-							</svg>
+						<div
+							className={[styles.icon, styles.removeGrade].join(" ")}
+							onClick={() => handleRemoveGrade(index)}
+						>
+							<FaTrash size={24} />
 						</div>
 					</div>
 				))}
@@ -228,7 +229,7 @@ export default function Notas() {
 			</div>
 			<div className={styles.footerInfo}>
 				<p id={styles.finalValue} dangerouslySetInnerHTML={{ __html: message }}></p>
-				<div id={styles.resetNotas} className={[styles.icon, styles.resetNotas].join(" ")}>
+				<div className={[styles.icon, styles.resetNotas].join(" ")} onClick={handleReset}>
 					<BiReset size={32} />
 				</div>
 			</div>

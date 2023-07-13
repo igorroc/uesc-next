@@ -21,14 +21,15 @@
 	gap: 0.2em;
 	color: #fff;
 	text-decoration: none;
-	background-color: var(--primary-color);
+	background-color: #fff3;
 	padding: 0.5em 1em;
 	border-radius: 1em;
 	transition: all 300ms ease;
 }
 
 .pageTitle a:hover {
-	background-color: var(--primary-color-hover);
+	background-color: #fff5;
+	border: 1px solid #fff;
 }
 
 .wrapperNotas {
@@ -121,11 +122,19 @@
 	background-color: white;
 }
 
-#resetNotas {
+.removeGrade {
+	color: var(--danger-color);
+}
+.removeGrade:hover {
+	background-color: var(--danger-color);
+	color: #fff;
+}
+
+.resetNotas {
 	transition: background-color 300ms ease, fill 300ms ease;
 }
 
-#resetNotas:hover {
+.resetNotas:hover {
 	animation: girar 1s linear infinite;
 }
 
