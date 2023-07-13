@@ -1,7 +1,7 @@
 .footer {
 	width: 100%;
 	padding: 1em 0;
-	
+
 	margin-top: auto;
 
 	color: white;
@@ -14,24 +14,60 @@
 	justify-content: center;
 }
 
-.footer i {
-	font-size: 0.8em;
+.animatedCopy {
+	position: relative;
+	z-index: 1;
+	display: inline-block;
+	width: fit-content;
+	color: #5aeb73;
+	transition: all 300ms ease-out;
 }
 
-.footer a {
-	text-decoration: none;
+.animatedCopy:after {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	left: 0;
+	bottom: -1px;
+	width: 100%;
+	height: 1px;
+	background: linear-gradient(90deg, #5aeb73, #0000, #5aeb73);
+	background-size: 200% 100%;
+	animation: CustomAnimation 1s ease-in-out infinite reverse;
+}
+
+.animatedCopy:before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	left: 0;
+	bottom: -1px;
+	width: 100%;
+	height: 1px;
+	background-color: #5aeb73;
+	transition: all 300ms ease-out;
+}
+
+.animatedCopy:hover {
+	color: #000;
 	font-weight: bold;
-	letter-spacing: 0.1em;
+	padding: 0 5px;
+}
 
-	-webkit-background-clip: text;
-	background-clip: text;
+.animatedCopy:hover:after {
+	animation-play-state: paused;
+}
 
-	background-image: linear-gradient(90deg, #08acae, #13974a, #08acae);
+.animatedCopy:hover:before {
+	bottom: 0;
+	height: 100%;
+}
 
-	background-size: 200%;
-	background-position: 0%;
-
-	animation: textGradientAnimation 2s infinite;
-
-	color: transparent;
+@keyframes CustomAnimation {
+	0% {
+		background-position-x: -100%;
+	}
+	100% {
+		background-position-x: 100%;
+	}
 }

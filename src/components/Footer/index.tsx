@@ -3,6 +3,7 @@ import { AiFillHeart } from "react-icons/ai"
 import { BiSolidCoffee } from "react-icons/bi"
 
 import styles from "./footer.module.css"
+import Link from "next/link"
 
 export default function Footer() {
 	return (
@@ -10,9 +11,9 @@ export default function Footer() {
 			<div>
 				<p>
 					Feito com <AiFillHeart /> e <BiSolidCoffee /> por{" "}
-					<a target="_blank" href="https://ilrocha.com">
+					<Link target="_blank" href="https://ilrocha.com" className={styles.animatedCopy}>
 						Igor Rocha
-					</a>
+					</Link>
 				</p>
 			</div>
 		</footer>
