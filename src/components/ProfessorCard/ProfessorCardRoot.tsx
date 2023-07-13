@@ -1,10 +1,12 @@
 import React from "react"
 
 import styles from "./professor_card.module.css"
+import { CollectionReference } from "firebase/firestore"
 
 type ProfessorCardProps = {
 	id?: string
 	className?: string
+	course?: CollectionReference
 	children: React.ReactNode
 }
 

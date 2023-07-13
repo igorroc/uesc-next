@@ -53,7 +53,7 @@ export default function ProfessorList(props: ProfessorListProps) {
 			)}
 			{filteredProfessors &&
 				filteredProfessors.map((professor) => (
-					<ProfessorCard.Root key={professor.id}>
+					<ProfessorCard.Root key={professor.id} course={professor.course}>
 						<ProfessorCard.Title>
 							<h3>{professor.name}</h3>
 						</ProfessorCard.Title>
