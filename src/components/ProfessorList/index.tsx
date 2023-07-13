@@ -19,7 +19,7 @@ export default function ProfessorList(props: ProfessorListProps) {
 
 	const filteredProfessors = professors.filter((professor) =>
 		professor.name.toLowerCase().includes(props.search.toLowerCase()) ||
-		professor.nicknames.some((nickname) =>
+		professor.nicknames?.some((nickname) =>
 			nickname.toLowerCase().includes(props.search.toLowerCase())
 		)
 			? true
@@ -69,6 +69,12 @@ export default function ProfessorList(props: ProfessorListProps) {
 								</Link>
 							</div>
 						</ProfessorCard.Description>
+						{professor.photo && (
+							<ProfessorCard.Image
+								src={professor.photo}
+								alt={`Foto de ${professor.name}`}
+							/>
+						)}
 					</ProfessorCard.Root>
 				))}
 		</div>

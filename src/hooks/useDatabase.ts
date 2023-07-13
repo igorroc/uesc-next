@@ -12,7 +12,17 @@ export async function getProfessors() {
 				email: doc.data().email,
 				nicknames: doc.data().nicknames,
 				course: doc.data().course,
+				photo: doc.data().photo,
 			}
+		})
+		professors.sort((a, b) => {
+			if (a.name > b.name) {
+				return 1
+			}
+			if (a.name < b.name) {
+				return -1
+			}
+			return 0
 		})
 		return professors
 	}

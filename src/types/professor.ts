@@ -6,4 +6,5 @@ export type TProfessor = {
 	email: string
 	nicknames: string[]
 	course: CollectionReference
+	photo?: string
 }
