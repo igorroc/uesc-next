@@ -119,7 +119,7 @@ export default function ProfessorFormAdmin() {
 		<form ref={form} className={styles.form} onSubmit={handleSubmit}>
 			<input type="text" placeholder="Nome do professor" name="professor_name" required />
 			<input type="email" placeholder="Email do professor" name="professor_email" required />
-			<select name="professor_course" required defaultValue={"Selecione um curso"}>
+			<select name="professor_course" required defaultValue="CIC">
 				{courses.map((course) => (
 					<option key={course.id} value={course.id}>
 						{course.name}

@@ -1,11 +1,12 @@
 "use client"
 
-import React, { useRef } from "react"
+import React, { useRef, useEffect } from "react"
 import emailjs from "@emailjs/browser"
 
 import styles from "./professor_form.module.css"
-import Link from "next/link"
 import CustomLink from "../CustomLink"
+import { TCourse } from "@/types/course"
+import { getCourses } from "@/hooks/useDatabase"
 
 enum Status {
 	DEFAULT = "Pedir para adicionar",
@@ -17,6 +18,7 @@ enum Status {
 export default function ProfessorForm() {
 	const form = useRef<HTMLFormElement>(null)
 	const [status, setStatus] = React.useState(Status.DEFAULT)
+	const [courses, setCourses] = React.useState<TCourse[]>()
 
 	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault()
@@ -50,6 +52,10 @@ export default function ProfessorForm() {
 			)
 	}
 
+	useEffect(() => {
+		getCourses().then(setCourses)
+	}, [])
+
 	return status == Status.SUCCESS ? (
 		<div className={styles.success}>
 			<div>
@@ -69,7 +75,15 @@ export default function ProfessorForm() {
 			<span>Informações do professor</span>
 			<input type="text" placeholder="Nome do professor" name="professor_name" required />
 			<input type="email" placeholder="Email do professor" name="professor_email" required />
-			<input type="text" placeholder="Curso do professor" name="professor_course" required />
+			{courses && (
+				<select name="professor_course" required>
+					{courses.map((course) => (
+						<option key={course.id} value={course.name}>
+							{course.name}
+						</option>
+					))}
+				</select>
+			)}
 			<input type="text" placeholder="Apelidos do professor" name="professor_nicknames" />
 			<button type="submit">{status}</button>
 		</form>
