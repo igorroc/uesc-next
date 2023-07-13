@@ -85,6 +85,7 @@ export default function ProfessorForm() {
 				</select>
 			)}
 			<input type="text" placeholder="Apelidos do professor" name="professor_nicknames" />
+			<input type="text" placeholder="Foto do professor (URL)" name="professor_photo" />
 			<button type="submit">{status}</button>
 		</form>
 	)
