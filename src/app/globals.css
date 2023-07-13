@@ -10,7 +10,7 @@
 	--warning-color: #fbd757;
 	--success-color: #73d673;
 	--info-color: #44c9e1;
-	
+
 	--footer-color: #202024;
 
 	--transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
@@ -20,6 +20,7 @@
 	margin: 0;
 	padding: 0;
 	font-family: inherit;
+	color: inherit;
 }
 
 body {

@@ -1,0 +1,32 @@
+.pageWrapper {
+	width: 90%;
+	max-width: var(--max-width);
+	height: 100%;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+
+.pageWrapper h1 {
+	margin-bottom: 1em;
+}
+
+.code {
+	margin: 1em 0;
+	background-color: #fff1;
+	padding: 1em;
+	border-radius: 0.5em;
+}
+
+.codeInfo {
+	color: var(--info-color);
+}
+
+.codeSuccess {
+	color: var(--success-color);
+}
+
+.codeDanger {
+	color: var(--danger-color);
+}

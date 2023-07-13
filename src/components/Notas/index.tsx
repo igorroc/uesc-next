@@ -3,6 +3,8 @@
 import React from "react"
 import styles from "./notas.module.css"
 import { Grade } from "@/types/grade"
+import Link from "next/link"
+import { AiFillInfoCircle } from "react-icons/ai"
 
 export default function Notas() {
 	const [grades, setGrades] = React.useState<Grade[]>([])
@@ -63,7 +65,6 @@ export default function Notas() {
 					)
 				} else {
 					let needed = (totalWeight * 7 - accumulated) / 10 / emptyGradesCount
-					needed = needed.toFixed(2)
 					if (needed > 10) {
 						let cMedia = (accumulated + 100) / totalWeight
 						let quantoPrecisa = (5 - cMedia * 0.6) / 0.4
@@ -76,16 +77,17 @@ export default function Notas() {
 						let texto = "Você precisa tirar "
 						let mensagemMotivacional = ""
 						let emojiMotivacional = ""
+						let formatted = needed.toFixed(2)
 						if (needed < 7) {
-							texto += `<span class="${styles.mediaGreen}">${needed}</span>`
+							texto += `<span class="${styles.mediaGreen}">${formatted}</span>`
 							mensagemMotivacional = "Metendo essa, você passa!"
 							emojiMotivacional = "🎉"
 						} else if (needed >= 9) {
-							texto += `<span class="${styles.mediaRed}">${needed}</span>`
+							texto += `<span class="${styles.mediaRed}">${formatted}</span>`
 							mensagemMotivacional = "Veja pelo lado bom: dá pra passar sem final!"
 							emojiMotivacional = "🫠"
 						} else {
-							texto += `<span class="${styles.mediaRed}">${needed}</span>`
+							texto += `<span class="${styles.mediaRed}">${formatted}</span>`
 							mensagemMotivacional = "Mas não se preocupe, você consegue!"
 							emojiMotivacional = "🤗"
 						}
@@ -101,19 +103,19 @@ export default function Notas() {
 					let formatted = quantoPrecisa.toFixed(2)
 					let formattedComCor = `<span class="${styles.needsGrade}">${formatted}</span>`
 
-					if (parseFloat(formatted) > 10) {
+					if (quantoPrecisa > 10) {
 						setMessage(
 							`Sua média é ${mediaComCor}. Nem tirando 10 na final você consegue passar na disciplina.
 							<br/>
 							<span class="${styles.motivacional}">Não foi dessa vez, vamos deixar pro próximo semestre</span>😓`
 						)
-					} else if (parseFloat(formatted) >= 7) {
+					} else if (quantoPrecisa >= 7) {
 						setMessage(
 							`Sua média é ${mediaComCor}. Você precisa tirar ${formattedComCor} na final para passar na disciplina.
 							<br/>
 							<span class="${styles.motivacional}">Sei que tá difícil, mas deixar pro próximo semestre é pior</span> 😉`
 						)
-					} else if (parseFloat(formatted) >= 5) {
+					} else if (quantoPrecisa >= 5) {
 						setMessage(
 							`Sua média é ${mediaComCor}. Você precisa tirar ${formattedComCor} na final para passar na disciplina.
 							<br/>
@@ -171,7 +173,13 @@ export default function Notas() {
 
 	return (
 		<div className={styles.pageWrapper}>
-			<h1>Calculadora</h1>
+			<div className={styles.pageTitle}>
+				<h1>Calculadora</h1>
+				<Link href="/calculadora/info">
+					<AiFillInfoCircle />
+					<span>Info</span>
+				</Link>
+			</div>
 			<div className={styles.wrapperNotas}>
 				{grades.map((grade, index) => (
 					<div className={styles.nota} key={index}>

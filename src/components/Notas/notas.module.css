@@ -8,6 +8,29 @@
 	justify-content: flex-end;
 }
 
+.pageTitle {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.pageTitle a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.2em;
+	color: #fff;
+	text-decoration: none;
+	background-color: var(--primary-color);
+	padding: 0.5em 1em;
+	border-radius: 1em;
+	transition: all 300ms ease;
+}
+
+.pageTitle a:hover {
+	background-color: var(--primary-color-hover);
+}
+
 .wrapperNotas {
 	max-height: 100%;
 	overflow: auto;
