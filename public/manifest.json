@@ -1,0 +1,32 @@
+{
+	"theme_color": "#39e18f",
+	"background_color": "#36393f",
+	"display": "standalone",
+	"scope": "/",
+	"start_url": "/",
+	"name": "Ferramentas UESC",
+	"short_name": "Ferramentas UESC",
+	"description": "Tenha tudo o que você precisa para se destacar na UESC! Nosso site oferece diversas ferramentas para alunos, incluindo calculadora de notas, banco de e-mails e muito mais. Simplifique sua rotina universitária e alcance o sucesso com facilidade!",
+	"icons": [
+		{
+			"src": "/icon-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "/icon-256x256.png",
+			"sizes": "256x256",
+			"type": "image/png"
+		},
+		{
+			"src": "/icon-384x384.png",
+			"sizes": "384x384",
+			"type": "image/png"
+		},
+		{
+			"src": "/icon-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	]
+}
