@@ -63,7 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang="pt-br">
 			<body className={inter.className}>
-				<main>
+				<main id="main">
 					<div className="scrollableContent">{children}</div>
 				</main>
 				<Footer />

@@ -37,7 +37,7 @@ body {
 	flex-direction: column;
 }
 
-main {
+#main {
 	position: relative;
 	width: 100%;
 	flex: 1;
