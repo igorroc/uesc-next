@@ -5,7 +5,7 @@
 	margin-top: auto;
 
 	color: white;
-	background-color: #202024;
+	background-color: var(--footer-color);
 
 	text-align: center;
 
