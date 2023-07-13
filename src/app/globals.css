@@ -11,9 +11,19 @@
 	--success-color: #73d673;
 	--info-color: #44c9e1;
 
+	--cancel-color-transparent: hsla(3, 91%, 67%, 0.3);
+	--cancel-color: #f7665e;
+	--cancel-color-hover: #d4534c;
+
+	--confirm-color: #73d673;
+	--confirm-color-hover: #7ce97c;
+
 	--footer-color: #202024;
 
+	--border-radius: 1em;
+
 	--transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
+	--default-all-transition: all 0.2s var(--transition-ease);
 }
 
 * {
