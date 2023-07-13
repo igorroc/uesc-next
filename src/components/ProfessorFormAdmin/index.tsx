@@ -68,6 +68,8 @@ export default function ProfessorFormAdmin() {
 			setLoggedIn(true)
 			// reset form
 			adminForm.current.reset()
+			// save login in local storage
+			localStorage.setItem("ILR_ADMIN_TOKEN", adminLogin.email + adminLogin.password)
 		} else {
 			alert("Senha incorreta")
 		}
@@ -75,6 +77,17 @@ export default function ProfessorFormAdmin() {
 
 	useEffect(() => {
 		getCourses().then(setCourses)
+
+		// check if admin is logged in
+		const adminLoginToken = localStorage.getItem("ILR_ADMIN_TOKEN")
+		if (
+			process.env.NEXT_PUBLIC_ADMIN_EMAIL &&
+			process.env.NEXT_PUBLIC_ADMIN_PASSWORD &&
+			adminLoginToken ==
+				process.env.NEXT_PUBLIC_ADMIN_EMAIL + process.env.NEXT_PUBLIC_ADMIN_PASSWORD
+		) {
+			setLoggedIn(true)
+		}
 	}, [])
 
 	if (!loggedIn) {
