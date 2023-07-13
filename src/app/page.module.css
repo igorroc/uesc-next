@@ -14,6 +14,9 @@
 }
 
 .links {
+	--pressed-location: 10px;
+	--pressed-length: 10px;
+
 	padding: 10px 20px;
 	width: 5em;
 
@@ -31,12 +34,19 @@
 
 	color: aliceblue;
 	background-color: #2a2c30;
-	box-shadow: 0px 10px 0px var(--primary-color);
+	box-shadow: 0px var(--pressed-location) 0px var(--primary-color);
+	transform: translateY(calc(var(--pressed-length) - var(--pressed-location)));
 	transition: all 150ms ease-out;
 }
 
 .links:hover {
+	--pressed-location: calc(var(--pressed-length) * 0.8);
+	transform: translateY(calc(var(--pressed-length) - var(--pressed-location)));
+	background-color: #303237;
+}
+
+.links:active {
+	--pressed-location: 0px;
+	transform: translateY(calc(var(--pressed-length) - var(--pressed-location)));
 	background-color: #34363a;
-	box-shadow: 0px 0px 0px var(--primary-color-hover);
-	transform: translateY(10px);
 }
