@@ -6,6 +6,7 @@ import styles from "./professor_form.module.css"
 import CustomLink from "../CustomLink"
 import { TCourse } from "@/types/course"
 import { addProfessor, getCourses } from "@/hooks/useDatabase"
+import { CollectionReference } from "firebase/firestore"
 
 enum Status {
 	DEFAULT = "Adicionar",
@@ -31,7 +32,14 @@ export default function ProfessorFormAdmin() {
 			name: form.current.professor_name.value,
 			email: form.current.professor_email.value,
 			course: form.current.professor_course.value,
-			nicknames: form.current.professor_nicknames.value,
+			nicknames: form.current.professor_nicknames.value.split(","),
+			photo: form.current.professor_photo.value,
+		} as {
+			name: string
+			email: string
+			course: CollectionReference
+			nicknames: string[]
+			photo: string
 		}
 
 		const res = await addProfessor(data)
@@ -119,6 +127,7 @@ export default function ProfessorFormAdmin() {
 				))}
 			</select>
 			<input type="text" placeholder="Apelidos do professor" name="professor_nicknames" />
+			<input type="text" placeholder="Foto do professor" name="professor_photo" />
 			<button type="submit">{status}</button>
 		</form>
 	)
