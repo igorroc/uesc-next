@@ -5,7 +5,7 @@ import React, { useEffect, useRef } from "react"
 import styles from "./professor_form.module.css"
 import CustomLink from "../CustomLink"
 import { TCourse } from "@/types/course"
-import { addProfessor, getCourses } from "@/hooks/useDatabase"
+import { addAllProfessors, addProfessor, getCourses } from "@/hooks/useDatabase"
 import { CollectionReference } from "firebase/firestore"
 
 enum Status {
@@ -85,6 +85,7 @@ export default function ProfessorFormAdmin() {
 
 	useEffect(() => {
 		getCourses().then(setCourses)
+		addAllProfessors()
 
 		// check if admin is logged in
 		const adminLoginToken = localStorage.getItem("ILR_ADMIN_TOKEN")
