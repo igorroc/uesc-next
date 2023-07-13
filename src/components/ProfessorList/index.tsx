@@ -19,9 +19,11 @@ export default function ProfessorList(props: ProfessorListProps) {
 	const [loading, setLoading] = React.useState<boolean>(true)
 
 	const filteredProfessors = professors.filter((professor) =>
-		clearString(professor.name.toLowerCase()).includes(props.search.toLowerCase()) ||
+		clearString(professor.name.toLowerCase()).includes(
+			clearString(props.search.toLowerCase())
+		) ||
 		professor.nicknames?.some((nickname) =>
-			clearString(nickname.toLowerCase()).includes(props.search.toLowerCase())
+			clearString(nickname.toLowerCase()).includes(clearString(props.search.toLowerCase()))
 		)
 			? true
 			: false
