@@ -19,7 +19,7 @@ export default function ProfessorFormAdmin() {
 	const form = useRef<HTMLFormElement>(null)
 	const adminForm = useRef<HTMLFormElement>(null)
 	const [status, setStatus] = React.useState(Status.DEFAULT)
-	const [courses, setCourses] = React.useState<TCourse[]>([])
+	const [courses, setCourses] = React.useState<TCourse[]>()
 	const [loggedIn, setLoggedIn] = React.useState(false)
 
 	async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -119,13 +119,15 @@ export default function ProfessorFormAdmin() {
 		<form ref={form} className={styles.form} onSubmit={handleSubmit}>
 			<input type="text" placeholder="Nome do professor" name="professor_name" required />
 			<input type="email" placeholder="Email do professor" name="professor_email" required />
-			<select name="professor_course" required defaultValue="CIC">
-				{courses.map((course) => (
-					<option key={course.id} value={course.id}>
-						{course.name}
-					</option>
-				))}
-			</select>
+			{courses && (
+				<select name="professor_course" required defaultValue="CIC">
+					{courses.map((course) => (
+						<option key={course.id} value={course.id}>
+							{course.name}
+						</option>
+					))}
+				</select>
+			)}
 			<input type="text" placeholder="Apelidos do professor" name="professor_nicknames" />
 			<input type="text" placeholder="Foto do professor" name="professor_photo" />
 			<button type="submit">{status}</button>
