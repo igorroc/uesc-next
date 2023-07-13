@@ -28,3 +28,12 @@
 .mail:hover a {
 	color: var(--primary-color-light);
 }
+
+.easterEgg {
+	width: calc(90% - 2em);
+	max-width: var(--max-width);
+	margin: 0 auto;
+	padding: 1em;
+	background: #fff2;
+	border-radius: 1em;
+}

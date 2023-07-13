@@ -8,6 +8,7 @@ import styles from "./professor_list.module.css"
 import Link from "next/link"
 import { TProfessor } from "@/types/professor"
 import { clearString } from "@/utils/clearName"
+import { easterEggs } from "@/utils/easterEgg"
 
 type ProfessorListProps = {
 	search: string
@@ -80,6 +81,36 @@ export default function ProfessorList(props: ProfessorListProps) {
 						)}
 					</ProfessorCard.Root>
 				))}
+
+			{easterEggs.includes(clearString(props.search)) && (
+				<>
+					<p className={styles.easterEgg}>
+						Você encontrou um Easter Egg! Parabéns! <br />
+						Eu sou o criador desse site! <br />
+					</p>
+					<ProfessorCard.Root id="loadingState">
+						<ProfessorCard.Title>
+							<h3>Igor Lima Rocha</h3>
+						</ProfessorCard.Title>
+						<ProfessorCard.Description>
+							<div className={styles.mail}>
+								<IoMdMail />
+								<a
+									href="mailto:igor@ilrocha.com"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									igor@ilrocha.com
+								</a>
+							</div>
+						</ProfessorCard.Description>
+						<ProfessorCard.Image
+							src={"https://github.com/igorroc.png"}
+							alt={`Foto de Igor Rocha`}
+						/>
+					</ProfessorCard.Root>
+				</>
+			)}
 		</div>
 	)
 }
