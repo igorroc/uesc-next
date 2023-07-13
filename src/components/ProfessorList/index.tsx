@@ -7,6 +7,7 @@ import { IoMdMail } from "react-icons/io"
 import styles from "./professor_list.module.css"
 import Link from "next/link"
 import { TProfessor } from "@/types/professor"
+import { clearString } from "@/utils/clearName"
 
 type ProfessorListProps = {
 	search: string
@@ -18,9 +19,9 @@ export default function ProfessorList(props: ProfessorListProps) {
 	const [loading, setLoading] = React.useState<boolean>(true)
 
 	const filteredProfessors = professors.filter((professor) =>
-		professor.name.toLowerCase().includes(props.search.toLowerCase()) ||
+		clearString(professor.name.toLowerCase()).includes(props.search.toLowerCase()) ||
 		professor.nicknames?.some((nickname) =>
-			nickname.toLowerCase().includes(props.search.toLowerCase())
+			clearString(nickname.toLowerCase()).includes(props.search.toLowerCase())
 		)
 			? true
 			: false

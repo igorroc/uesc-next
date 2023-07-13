@@ -7,8 +7,6 @@ import { BsFillPersonFill } from "react-icons/bs"
 import styles from "./emails.module.css"
 import Professors from "@/components/Professors"
 import CustomLink from "@/components/CustomLink"
-import { Metadata } from "next"
-
 
 export default function Emails() {
 	return (

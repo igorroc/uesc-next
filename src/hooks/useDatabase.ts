@@ -1,7 +1,7 @@
 import { addDocument, getCollection } from "@/firebase/firestore/getData"
 import { TCourse } from "@/types/course"
 import { TProfessor } from "@/types/professor"
-import professorsJson from "@/utils/professors.json"
+import { clearString } from "@/utils/clearName"
 
 export async function getProfessors() {
 	const professorsResponse = await getCollection("professors")
@@ -17,10 +17,10 @@ export async function getProfessors() {
 			}
 		})
 		professors.sort((a, b) => {
-			if (a.name > b.name) {
+			if (clearString(a.name) > clearString(b.name)) {
 				return 1
 			}
-			if (a.name < b.name) {
+			if (clearString(a.name) < clearString(b.name)) {
 				return -1
 			}
 			return 0
