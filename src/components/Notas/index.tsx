@@ -19,10 +19,8 @@ export default function Notas() {
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		handleAddGrade()
-	}
-
-	function handleAddGrade() {
+		
+		console.log("add")
 		setGrades([...grades, newGrade])
 		setNewGrade({ value: null, weight: 10 } as Grade)
 
@@ -223,12 +221,7 @@ export default function Notas() {
 							required
 						/>
 					</div>
-					<button
-						id={styles.buttonAddGrade}
-						className={styles.icon}
-						onClick={handleAddGrade}
-						type="submit"
-					>
+					<button id={styles.buttonAddGrade} className={styles.icon} type="submit">
 						<BiPlus size={32} />
 					</button>
 				</form>
