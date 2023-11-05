@@ -3,6 +3,7 @@ import styles from "./page.module.css"
 
 import { BsFillEnvelopeFill, BsGlobeAmericas } from "react-icons/bs"
 import { FaCalculator } from "react-icons/fa"
+import { BiBus } from "react-icons/bi"
 
 export default function Home() {
 	return (
@@ -16,6 +17,10 @@ export default function Home() {
 					<Link className={styles.links} href="./calculadora">
 						<FaCalculator size={48} />
 						<span> Calculadora de Notas </span>
+					</Link>
+					<Link className={styles.links} href="https://busca-bus.vercel.app/">
+						<BiBus size={48} />
+						<span> Horário de Ônibus </span>
 					</Link>
 					<Link
 						className={styles.links}
