@@ -13,12 +13,10 @@ export const metadata: Metadata = {
 	},
 	description:
 		"Tenha tudo o que você precisa para se destacar na UESC! Nosso site oferece diversas ferramentas para alunos, incluindo calculadora de notas, banco de e-mails e muito mais. Simplifique sua rotina universitária e alcance o sucesso com facilidade!",
-	authors: [
-		{
-			name: "Igor Rocha",
-			url: "https://ilrocha.com",
-		},
-	],
+	authors: {
+		name: "Igor Rocha",
+		url: "https://ilrocha.com",
+	},
 	keywords: [
 		"uesc",
 		"universidade estadual de santa cruz",
