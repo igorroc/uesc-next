@@ -4,12 +4,6 @@ export const metadata: Metadata = {
 	title: "Email dos Professores",
 	description:
 		"Encontre seu professor em uma busca! O nosso banco de dados de e-mails de professores da UESC é a solução perfeita. Navegue facilmente pela plataforma e encontre o professor ideal para suas necessidades acadêmicas.",
-	authors: [
-		{
-			name: "Igor Rocha",
-			url: "https://ilrocha.com",
-		},
-	],
 	keywords: [
 		"uesc",
 		"universidade estadual de santa cruz",
