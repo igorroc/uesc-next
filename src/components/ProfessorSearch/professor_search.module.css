@@ -1,10 +1,10 @@
 .searchBar {
-	position: fixed;
+	position: sticky;
+	top: 0;
 	z-index: 99;
-	left: 50%;
-	transform: translateX(-50%);
 	width: 90%;
 	max-width: calc(var(--max-width) + 1em);
+	margin: 0 auto;
 	padding-top: 0.5em;
 	display: flex;
 	gap: 10px;
