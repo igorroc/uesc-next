@@ -1,0 +1,34 @@
+.wrapper {
+	width: 90%;
+	max-width: var(--max-width);
+	height: 100%;
+	margin: 0 auto;
+	padding: 5.5em 0 2em;
+	overflow-y: auto;
+}
+
+.wrapper h1 {
+	margin-bottom: 0.8em;
+}
+
+.wrapper h2 {
+	margin: 1.4em 0 0.5em;
+	font-size: 1.1em;
+}
+
+.wrapper p {
+	line-height: 1.6;
+	color: #e6e6e6;
+}
+
+.wrapper a {
+	color: var(--primary-color-light);
+}
+
+.notice {
+	margin-top: 2em;
+	padding: 0.8em 1em;
+	border-radius: 0.6em;
+	background: #ffffff14;
+	color: #f3f3f3;
+}
