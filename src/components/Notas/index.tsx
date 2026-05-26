@@ -44,7 +44,7 @@ export default function Notas() {
 	}
 
 	const accumulated = grades.reduce((acc, grade) => {
-		const value = grade.value || 0
+		const value = grade.value ?? 0
 		const sum = acc + value * grade.weight
 
 		return sum
@@ -56,7 +56,7 @@ export default function Notas() {
 
 	const media = accumulated / totalWeight
 
-	const emptyGradesCount = grades.filter((grade) => !grade.value).length
+	const emptyGradesCount = grades.filter((grade) => grade.value == null).length
 
 	React.useEffect(() => {
 		if (hasInteractedRef.current) {
@@ -196,9 +196,9 @@ export default function Notas() {
 			<div className={styles.wrapperNotas}>
 				{grades.map((grade, index) => (
 					<div className={styles.nota} key={index}>
-						<div className={styles.info}>
-							Nota: <span className={styles.inputValor}>{grade.value || "?"}</span>
-						</div>
+					<div className={styles.info}>
+						Nota: <span className={styles.inputValor}>{grade.value ?? "?"}</span>
+					</div>
 						<div className={styles.info}>
 							Peso: <span className={styles.inputValor}>{grade.weight}</span>
 						</div>
@@ -217,8 +217,13 @@ export default function Notas() {
 							id="inputGradeValue"
 							className={styles.inputValor}
 							type="number"
-							value={newGrade.value || ""}
-							onChange={(e) => setNewGrade({ ...newGrade, value: +e.target.value })}
+							value={newGrade.value ?? ""}
+							onChange={(e) =>
+								setNewGrade({
+									...newGrade,
+									value: e.target.value === "" ? null : +e.target.value,
+								})
+							}
 						/>
 					</div>
 					<div className={styles.info}>
