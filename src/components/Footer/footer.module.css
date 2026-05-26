@@ -14,6 +14,33 @@
 	justify-content: center;
 }
 
+.content {
+	width: 90%;
+	max-width: var(--max-width);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5em;
+}
+
+.credit {
+	display: flex;
+	align-items: center;
+	gap: 0.25em;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.links a {
+	color: var(--primary-color-light);
+	text-decoration: underline;
+}
+
+.notice {
+	font-size: 0.85em;
+	color: #d5d5d5;
+}
+
 .animatedCopy {
 	position: relative;
 	z-index: 1;
