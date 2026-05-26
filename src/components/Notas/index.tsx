@@ -10,6 +10,8 @@ import { FaTrash } from "react-icons/fa"
 
 export default function Notas() {
 	const [grades, setGrades] = React.useState<Grade[]>([])
+	const pageWrapperRef = React.useRef<HTMLDivElement>(null)
+	const hasInteractedRef = React.useRef(false)
 	const [newGrade, setNewGrade] = React.useState<Grade>({
 		weight: 10,
 	} as Grade)
@@ -20,6 +22,7 @@ export default function Notas() {
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
+		hasInteractedRef.current = true
 
 		console.log("add")
 		setGrades([...grades, newGrade])
@@ -31,10 +34,12 @@ export default function Notas() {
 	}
 
 	function handleRemoveGrade(index: number) {
+		hasInteractedRef.current = true
 		setGrades(grades.filter((_, i) => i !== index))
 	}
 
 	function handleReset() {
+		hasInteractedRef.current = true
 		setGrades([])
 	}
 
@@ -54,6 +59,10 @@ export default function Notas() {
 	const emptyGradesCount = grades.filter((grade) => !grade.value).length
 
 	React.useEffect(() => {
+		if (hasInteractedRef.current) {
+			pageWrapperRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
+		}
+
 		if (grades.length === 0) {
 			setMessage(`Insira suas notas para eu calcular!<br />
 			Deixe <span class="${styles.mediaYellow}">vazio</span> o campo de
@@ -176,7 +185,7 @@ export default function Notas() {
 	}, [grades])
 
 	return (
-		<div className={styles.pageWrapper}>
+		<div className={styles.pageWrapper} ref={pageWrapperRef}>
 			<div className={styles.pageTitle}>
 				<h1>Calculadora</h1>
 				<Link href="/calculadora/info">
