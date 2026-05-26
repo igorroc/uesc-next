@@ -9,10 +9,12 @@ import Link from "next/link"
 import { TProfessor } from "@/types/professor"
 import { clearString } from "@/utils/clearName"
 import { easterEggs } from "@/utils/easterEgg"
+import type { ProfessorFilter } from "../Professors"
 
 type ProfessorListProps = {
 	search: string
 	setSearch: React.Dispatch<React.SetStateAction<string>>
+	filter: ProfessorFilter
 }
 
 export default function ProfessorList(props: ProfessorListProps) {
@@ -20,15 +22,25 @@ export default function ProfessorList(props: ProfessorListProps) {
 	const [loading, setLoading] = React.useState<boolean>(true)
 
 	const filteredProfessors = professors.filter((professor) =>
-		clearString(professor.name.toLowerCase()).includes(
-			clearString(props.search.toLowerCase())
-		) ||
-		professor.nicknames?.some((nickname) =>
-			clearString(nickname.toLowerCase()).includes(clearString(props.search.toLowerCase()))
-		)
-			? true
-			: false
+		!!(clearString(professor.name.toLowerCase()).includes(
+				clearString(props.search.toLowerCase())
+			) ||
+			professor.nicknames?.some((nickname) =>
+				clearString(nickname.toLowerCase()).includes(clearString(props.search.toLowerCase()))
+			))
 	)
+
+	const visibleProfessors = filteredProfessors.filter((professor) => {
+		if (props.filter === "withPhoto") {
+			return !!professor.photo
+		}
+
+		if (props.filter === "withoutPhoto") {
+			return !professor.photo
+		}
+
+		return true
+	})
 
 	useEffect(() => {
 		getProfessors().then((data) => {
@@ -55,8 +67,8 @@ export default function ProfessorList(props: ProfessorListProps) {
 					</ProfessorCard.Description>
 				</ProfessorCard.Root>
 			)}
-			{filteredProfessors &&
-				filteredProfessors.map((professor) => (
+			{visibleProfessors &&
+				visibleProfessors.map((professor) => (
 					<ProfessorCard.Root key={professor.id} course={professor.course}>
 						<ProfessorCard.Title>
 							<h3>{professor.name}</h3>
