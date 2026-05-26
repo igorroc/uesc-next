@@ -4,6 +4,7 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import PWA from "@/components/PWA"
 import { Analytics } from "@vercel/analytics/next"
+import GoogleAdsense from "@/components/GoogleAdsense"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -63,9 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang="pt-br">
 		<head>
-			<script async
-					src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8138197040090509"
-					crossOrigin="anonymous"></script>
+			<GoogleAdsense />
 		</head>
 		<body className={inter.className}>
 		<Analytics/>
