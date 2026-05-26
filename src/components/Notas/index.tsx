@@ -45,9 +45,8 @@ export default function Notas() {
 
 	const accumulated = grades.reduce((acc, grade) => {
 		const value = grade.value ?? 0
-		const sum = acc + value * grade.weight
 
-		return sum
+		return acc + value * grade.weight
 	}, 0)
 
 	const totalWeight = grades.reduce((acc, grade) => {
@@ -88,8 +87,8 @@ export default function Notas() {
 						)
 					} else {
 						let texto = "Você precisa tirar "
-						let mensagemMotivacional = ""
-						let emojiMotivacional = ""
+						let mensagemMotivacional: string
+						let emojiMotivacional: string
 						let formatted = needed.toFixed(2)
 						if (needed < 7) {
 							texto += `<span class="${styles.mediaGreen}">${formatted}</span>`
