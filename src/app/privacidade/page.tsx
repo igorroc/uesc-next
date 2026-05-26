@@ -41,7 +41,7 @@ export default function PrivacidadePage() {
 
 			<h2>Dados informados em formulários</h2>
 			<p>
-				Quando voce envia dados em formulários (por exemplo, sugestão de professor), as
+				Quando você envia dados em formulários (por exemplo, sugestão de professor), as
 				informações são usadas somente para processar sua solicitação.
 			</p>
 

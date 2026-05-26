@@ -19,29 +19,29 @@ export default function Emails() {
 					de e-mail.
 				</p>
 				<p>
-					Os registros sao mantidos com curadoria manual e podem levar um tempo para
+					Os registros são mantidos com curadoria manual e podem levar um tempo para
 					atualizar.
 				</p>
 			</section>
 
 			<section className={styles.section}>
-				<h2>Origem dos dados e limitacoes</h2>
+				<h2>Origem dos dados e limitações</h2>
 				<ul>
-					<li>Dados reunidos de contribuicoes da comunidade academica.</li>
-					<li>Inclusoes e ajustes sao revisados antes de aparecer na lista.</li>
-					<li>E-mails institucionais podem mudar por decisao administrativa.</li>
+					<li>Dados reunidos de contribuições da comunidade acadêmica.</li>
+					<li>Inclusões e ajustes são revisados antes de aparecer na lista.</li>
+					<li>E-mails institucionais podem mudar por decisão administrativa.</li>
 				</ul>
 			</section>
 
 			<section className={styles.section}>
-				<h2>FAQ rapido</h2>
+				<h2>FAQ rápido</h2>
 				<p>
-					<strong>Como solicitar inclusao?</strong> Use o botao &quot;Novo Professor&quot; ao final
-					da pagina.
+					<strong>Como solicitar inclusão?</strong> Use o botão &quot;Novo Professor&quot; ao final
+					da página.
 				</p>
 				<p>
-					<strong>Posso solicitar correcao?</strong> Sim. Envie novamente com os dados
-					corretos para revisao.
+					<strong>Posso solicitar correção?</strong> Sim. Envie novamente com os dados
+					corretos para revisão.
 				</p>
 			</section>
 
@@ -49,7 +49,7 @@ export default function Emails() {
 			<div className={styles.notFound}>
 				<div className={styles.text}>
 					<p>Não encontrou o seu professor?</p>
-					<p>Clique no botão baixo e adicionarei o mais rápido possível!</p>
+					<p>Clique no botão abaixo e adicionarei o mais rápido possível!</p>
 				</div>
 				<CustomLink href={"./emails/add"}>
 					<BsFillPersonFill />
