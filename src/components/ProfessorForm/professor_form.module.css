@@ -59,3 +59,22 @@
 .form button:hover {
 	background-color: var(--primary-color-hover);
 }
+
+.privacyConsent {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.6em;
+	margin-top: 0.6em;
+	font-size: 0.95em;
+	line-height: 1.4;
+	color: #f2f2f2;
+}
+
+.privacyConsent input {
+	margin-top: 0.2em;
+}
+
+.privacyConsent a {
+	color: var(--primary-color-light);
+	text-decoration: underline;
+}

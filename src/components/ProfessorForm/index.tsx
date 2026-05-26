@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect } from "react"
 import emailjs from "@emailjs/browser"
+import Link from "next/link"
 
 import styles from "./professor_form.module.css"
 import CustomLink from "../CustomLink"
@@ -86,6 +87,13 @@ export default function ProfessorForm() {
 			)}
 			<input type="text" placeholder="Apelidos do professor" name="professor_nicknames" />
 			<input type="text" placeholder="Foto do professor (URL)" name="professor_photo" />
+			<label className={styles.privacyConsent}>
+				<input type="checkbox" name="privacy_consent" required />
+				<span>
+					Li e concordo com a <Link href="/privacidade">Política de Privacidade</Link> para
+					envio dos dados.
+				</span>
+			</label>
 			<button type="submit">{status}</button>
 		</form>
 	)
