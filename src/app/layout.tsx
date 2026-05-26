@@ -62,12 +62,17 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="pt-br">
-			<body className={inter.className}>
-				<Analytics/>
-				<PWA />
-				<main id="main">
-					<div className="scrollableContent">{children}</div>
-				</main>
+		<head>
+			<script async
+					src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8138197040090509"
+					crossOrigin="anonymous"></script>
+		</head>
+		<body className={inter.className}>
+		<Analytics/>
+		<PWA/>
+		<main id="main">
+			<div className="scrollableContent">{children}</div>
+		</main>
 				<Footer />
 			</body>
 		</html>
