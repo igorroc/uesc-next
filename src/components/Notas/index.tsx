@@ -28,6 +28,7 @@ export default function Notas() {
 		weight: 10,
 	} as Grade)
 	const [shareHref, setShareHref] = React.useState("/calculadora/compartilhar")
+	const [toastMessage, setToastMessage] = React.useState("")
 	const [message, setMessage] = React.useState<string>(`Insira suas notas para eu calcular!<br />
 	Deixe <span class="${styles.mediaYellow}">vazio</span> o campo de
 	<span class="${styles.info}">Nota</span> e clique no <b>+</b>
@@ -80,6 +81,28 @@ export default function Notas() {
 		const encoded = toBase64Url(JSON.stringify(compactPayload))
 		setShareHref(`/calculadora/compartilhar?g=${encoded}`)
 	}, [grades])
+
+	React.useEffect(() => {
+		if (!toastMessage) {
+			return
+		}
+
+		const timer = window.setTimeout(() => {
+			setToastMessage("")
+		}, 2400)
+
+		return () => window.clearTimeout(timer)
+	}, [toastMessage])
+
+	async function handleShare() {
+		try {
+			const url = `${window.location.origin}${shareHref}`
+			await navigator.clipboard.writeText(url)
+			setToastMessage("Link copiado! Agora envie para os colegas.")
+		} catch {
+			setToastMessage("Não consegui copiar. Tente novamente.")
+		}
+	}
 
 	React.useEffect(() => {
 		if (hasInteractedRef.current) {
@@ -213,15 +236,16 @@ export default function Notas() {
 				<h1>Calculadora</h1>
 				<div className={styles.headerActions}>
 					{grades.length > 0 && emptyGradesCount === 0 && (
-						<Link
-							href={shareHref}
+						<button
+							type="button"
 							className={styles.shareHeaderButton}
 							aria-label="Compartilhar notas e pesos calculados"
-							title="Gerar link para compartilhar suas notas e pesos com colegas"
+							title="Copiar link para compartilhar suas notas e pesos com colegas"
+							onClick={handleShare}
 						>
 							<FiShare2 />
 							<span>Compartilhar</span>
-						</Link>
+						</button>
 					)}
 					<Link href="/calculadora/info">
 						<AiFillInfoCircle />
@@ -292,6 +316,7 @@ export default function Notas() {
                     </div>
 				</div>
 			</div>
+			{toastMessage && <div className={styles.toast}>{toastMessage}</div>}
 		</div>
 	)
 }

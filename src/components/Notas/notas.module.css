@@ -163,9 +163,12 @@
 	background: linear-gradient(135deg, var(--warning-color), #ffd94d);
 	color: #1e1e1e;
 	font-weight: 700;
+	border: none;
+	font-size: 0.95rem;
 	box-shadow: 0 0 0 0 #fbd75799;
 	animation: pulseShare 1.8s ease-in-out infinite;
 	transition: all 250ms ease;
+	cursor: pointer;
 }
 
 .shareHeaderButton:hover {
@@ -233,6 +236,32 @@
 	}
 	50% {
 		box-shadow: 0 0 0 8px #fbd75700;
+	}
+}
+
+.toast {
+	position: fixed;
+	left: 50%;
+	bottom: 24px;
+	transform: translateX(-50%);
+	background-color: #111;
+	color: #fff;
+	padding: 0.75em 1em;
+	border-radius: 0.8em;
+	border: 1px solid #ffffff2e;
+	box-shadow: 0 10px 24px #00000055;
+	z-index: 40;
+	animation: toastIn 180ms ease;
+}
+
+@keyframes toastIn {
+	from {
+		opacity: 0;
+		transform: translateX(-50%) translateY(6px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(-50%) translateY(0);
 	}
 }
 
