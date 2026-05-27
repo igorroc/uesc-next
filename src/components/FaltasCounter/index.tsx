@@ -24,6 +24,45 @@ export default function FaltasCounter() {
 			? (remainingAbsences / classesPerWeek).toFixed(1)
 			: "0.0"
 
+	const remainingRatio = allowedAbsences > 0 ? remainingAbsences / allowedAbsences : 0
+
+	let statusClass: string
+	let statusTitle: string
+	let statusEmoji: string
+	let statusMessage: string
+
+	if (remainingAbsences < 0) {
+		statusClass = styles.danger
+		statusTitle = "Ops, passou do limite"
+		statusEmoji = "🚨"
+		statusMessage = "Você já ultrapassou o limite de faltas. Agora vale conversar com o professor e focar em não perder mais aulas."
+	} else if (remainingAbsences === 0) {
+		statusClass = styles.warning
+		statusTitle = "No limite"
+		statusEmoji = "😬"
+		statusMessage = "Você chegou ao limite máximo de faltas. A partir daqui, cada ausência pesa muito."
+	} else if (remainingRatio <= 0.2) {
+		statusClass = styles.warning
+		statusTitle = "Atenção total"
+		statusEmoji = "⚠️"
+		statusMessage = "Tá apertado! Falta pouco para estourar o limite, então vale priorizar presença nas próximas semanas."
+	} else if (remainingRatio <= 0.45) {
+		statusClass = styles.warning
+		statusTitle = "Sinal amarelo"
+		statusEmoji = "🟡"
+		statusMessage = "Ainda dá tempo de se organizar. Planeje as próximas faltas com cuidado."
+	} else if (remainingRatio <= 0.7) {
+		statusClass = styles.success
+		statusTitle = "Ritmo bom"
+		statusEmoji = "💪"
+		statusMessage = "Você está indo bem. Mantendo esse ritmo, a chance de susto no fim do semestre diminui bastante."
+	} else {
+		statusClass = styles.success
+		statusTitle = "Folga boa"
+		statusEmoji = "🎉"
+		statusMessage = "Excelente! Sua margem está tranquila. Continue assim para fechar o semestre sem drama."
+	}
+
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.formGrid}>
@@ -72,6 +111,9 @@ export default function FaltasCounter() {
 			</div>
 
 			<div className={styles.result}>
+				<div className={styles.resultHeader}>
+					<span className={styles.badge}>{statusEmoji} {statusTitle}</span>
+				</div>
 				<p>
 					Limite de faltas: <strong>{allowedAbsences}</strong>
 				</p>
@@ -88,13 +130,7 @@ export default function FaltasCounter() {
 					Estimativa de semanas restantes (faltando em todas): <strong>{estimatedWeeks}</strong>
 				</p>
 
-				{remainingAbsences < 0 ? (
-					<p className={styles.danger}>Você já ultrapassou o limite de faltas.</p>
-				) : remainingAbsences === 0 ? (
-					<p className={styles.warning}>Você chegou ao limite máximo de faltas.</p>
-				) : (
-					<p className={styles.success}>Ainda há margem de faltas. Se organize para não estourar.</p>
-				)}
+				<p className={statusClass}>{statusMessage}</p>
 			</div>
 		</div>
 	)
