@@ -240,6 +240,7 @@ export default function Notas() {
 							id="inputGradeValue"
 							className={styles.inputValor}
 							type="number"
+							step="0.01"
 							value={newGrade.value ?? ""}
 							onChange={(e) =>
 								setNewGrade({
@@ -254,6 +255,7 @@ export default function Notas() {
 						<input
 							className={styles.inputValor}
 							type="number"
+							step="0.01"
 							value={newGrade.weight}
 							onChange={(e) => setNewGrade({ ...newGrade, weight: +e.target.value })}
 							required
