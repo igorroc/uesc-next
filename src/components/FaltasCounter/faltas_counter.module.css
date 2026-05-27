@@ -1,0 +1,54 @@
+.wrapper {
+	width: 90%;
+	max-width: var(--max-width);
+	margin: 1em auto;
+	display: grid;
+	gap: 1em;
+}
+
+.formGrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 0.8em;
+}
+
+.formGrid label {
+	display: flex;
+	flex-direction: column;
+	gap: 0.35em;
+	font-weight: 600;
+}
+
+.formGrid input {
+	padding: 0.65em 0.75em;
+	border-radius: 0.6em;
+	border: 1px solid #ffffff2e;
+	background: #23252a;
+	color: #fff;
+}
+
+.result {
+	background: #ffffff10;
+	border: 1px solid #ffffff24;
+	border-radius: 0.8em;
+	padding: 1em;
+	line-height: 1.6;
+}
+
+.danger {
+	margin-top: 0.6em;
+	color: var(--danger-color);
+	font-weight: 700;
+}
+
+.warning {
+	margin-top: 0.6em;
+	color: var(--warning-color);
+	font-weight: 700;
+}
+
+.success {
+	margin-top: 0.6em;
+	color: var(--success-color);
+	font-weight: 700;
+}

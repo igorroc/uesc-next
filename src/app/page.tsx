@@ -4,6 +4,7 @@ import styles from "./page.module.css"
 import { BsFillEnvelopeFill, BsGlobeAmericas } from "react-icons/bs"
 import { FaCalculator } from "react-icons/fa"
 import { BiBus } from "react-icons/bi"
+import { MdEventBusy } from "react-icons/md"
 
 export default function Home() {
 	return (
@@ -30,6 +31,10 @@ export default function Home() {
 						<FaCalculator size={48} />
 						<span> Calculadora de Notas </span>
 					</Link>
+					<Link className={styles.links} href="/faltas">
+						<MdEventBusy size={48} />
+						<span> Contador de Faltas </span>
+					</Link>
 					<Link className={styles.links} href="https://busca-bus.vercel.app/">
 						<BiBus size={48} />
 						<span> Horário de Ônibus </span>
@@ -54,6 +59,10 @@ export default function Home() {
 					<li>
 						<strong>Calculadora de Notas:</strong> informe notas e pesos para estimar
 						média e necessidade de final.
+					</li>
+					<li>
+						<strong>Contador de Faltas:</strong> calcule seu limite restante por
+						disciplina.
 					</li>
 					<li>
 						<strong>Horário de Ônibus:</strong> atalho para consulta de horários em app
