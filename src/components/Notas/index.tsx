@@ -7,6 +7,18 @@ import Link from "next/link"
 import { AiFillInfoCircle } from "react-icons/ai"
 import { BiPlus, BiReset } from "react-icons/bi"
 import { FaTrash } from "react-icons/fa"
+import { FiShare2 } from "react-icons/fi"
+
+function toBase64Url(value: string) {
+	if (typeof window === "undefined") {
+		return ""
+	}
+
+	return btoa(unescape(encodeURIComponent(value)))
+		.replace(/\+/g, "-")
+		.replace(/\//g, "_")
+		.replace(/=+$/g, "")
+}
 
 export default function Notas() {
 	const [grades, setGrades] = React.useState<Grade[]>([])
@@ -15,6 +27,7 @@ export default function Notas() {
 	const [newGrade, setNewGrade] = React.useState<Grade>({
 		weight: 10,
 	} as Grade)
+	const [shareHref, setShareHref] = React.useState("/calculadora/compartilhar")
 	const [message, setMessage] = React.useState<string>(`Insira suas notas para eu calcular!<br />
 	Deixe <span class="${styles.mediaYellow}">vazio</span> o campo de
 	<span class="${styles.info}">Nota</span> e clique no <b>+</b>
@@ -56,6 +69,17 @@ export default function Notas() {
 	const media = accumulated / totalWeight
 
 	const emptyGradesCount = grades.filter((grade) => grade.value == null).length
+
+	React.useEffect(() => {
+		if (grades.length === 0) {
+			setShareHref("/calculadora/compartilhar")
+			return
+		}
+
+		const compactPayload = grades.map((grade) => [grade.value ?? null, grade.weight])
+		const encoded = toBase64Url(JSON.stringify(compactPayload))
+		setShareHref(`/calculadora/compartilhar?g=${encoded}`)
+	}, [grades])
 
 	React.useEffect(() => {
 		if (hasInteractedRef.current) {
@@ -242,6 +266,13 @@ export default function Notas() {
 			</div>
 			<div className={styles.footerInfo}>
 				<p id={styles.finalValue} dangerouslySetInnerHTML={{ __html: message }}></p>
+				<Link
+					href={shareHref}
+					className={[styles.icon, styles.shareNotas].join(" ")}
+					aria-label="Compartilhar minhas notas"
+				>
+					<FiShare2 size={24} />
+				</Link>
 				<div className={[styles.icon, styles.resetNotas].join(" ")} onClick={handleReset}>
 					<BiReset size={32} />
 				</div>

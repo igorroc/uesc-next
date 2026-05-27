@@ -138,6 +138,15 @@
 	animation: girar 1s linear infinite;
 }
 
+.shareNotas {
+	color: var(--warning-color);
+}
+
+.shareNotas:hover {
+	background-color: var(--warning-color);
+	color: #111;
+}
+
 #credits {
 	color: white;
 	text-align: center;
@@ -172,7 +181,6 @@
 }
 
 .footerInfo {
-	max-height: 5vh;
 	background-color: var(--footer-color);
 	border-radius: 7px;
 	color: #f1f1f1;
