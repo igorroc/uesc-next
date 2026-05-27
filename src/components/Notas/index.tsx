@@ -211,10 +211,23 @@ export default function Notas() {
 		<div className={styles.pageWrapper} ref={pageWrapperRef}>
 			<div className={styles.pageTitle}>
 				<h1>Calculadora</h1>
-				<Link href="/calculadora/info">
-					<AiFillInfoCircle />
-					<span>Info</span>
-				</Link>
+				<div className={styles.headerActions}>
+					{grades.length > 0 && emptyGradesCount === 0 && (
+						<Link
+							href={shareHref}
+							className={styles.shareHeaderButton}
+							aria-label="Compartilhar notas e pesos calculados"
+							title="Gerar link para compartilhar suas notas e pesos com colegas"
+						>
+							<FiShare2 />
+							<span>Compartilhar</span>
+						</Link>
+					)}
+					<Link href="/calculadora/info">
+						<AiFillInfoCircle />
+						<span>Info</span>
+					</Link>
+				</div>
 			</div>
 			<div className={styles.wrapperNotas}>
 				{grades.map((grade, index) => (
@@ -269,19 +282,9 @@ export default function Notas() {
 			<div className={styles.footerInfo}>
 				<p id={styles.finalValue} dangerouslySetInnerHTML={{ __html: message }}></p>
 				<div className={styles.footerButtons}>
-                    {grades.length > 0 && emptyGradesCount === 0 && (
-                        <Link
-                            href={shareHref}
-                            className={[styles.icon, styles.shareNotas].join(" ")}
-                            aria-label="Compartilhar notas e pesos calculados"
-                            title="Gerar link para compartilhar suas notas e pesos com colegas"
-                        >
-                            <FiShare2 size={24} />
-                        </Link>
-                    )}
-                    <div
-                        className={[styles.icon, styles.resetNotas].join(" ")}
-                        onClick={handleReset}
+					<div
+						className={[styles.icon, styles.resetNotas].join(" ")}
+						onClick={handleReset}
                         aria-label="Limpar todas as notas lançadas"
                         title="Remover todas as notas e reiniciar a calculadora"
                     >

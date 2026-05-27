@@ -14,12 +14,17 @@
 	justify-content: space-between;
 }
 
+.headerActions {
+	display: flex;
+	align-items: center;
+	gap: 0.6em;
+}
+
 .pageTitle a {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	gap: 0.2em;
-	color: #fff;
 	text-decoration: none;
 	background-color: #fff3;
 	padding: 0.5em 1em;
@@ -147,6 +152,28 @@
 	color: #111;
 }
 
+.shareHeaderButton {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.35em;
+	text-decoration: none;
+	padding: 0.55em 1em;
+	border-radius: 1em;
+	background: linear-gradient(135deg, var(--warning-color), #ffd94d);
+	color: #1e1e1e;
+	font-weight: 700;
+	box-shadow: 0 0 0 0 #fbd75799;
+	animation: pulseShare 1.8s ease-in-out infinite;
+	transition: all 250ms ease;
+}
+
+.shareHeaderButton:hover {
+	transform: translateY(-1px);
+	filter: brightness(1.03);
+	box-shadow: 0 8px 20px #00000033;
+}
+
 #credits {
 	color: white;
 	text-align: center;
@@ -197,6 +224,16 @@
 	display: flex;
 	gap: 10px;
 	margin-left: auto;
+}
+
+@keyframes pulseShare {
+	0%,
+	100% {
+		box-shadow: 0 0 0 0 #fbd75766;
+	}
+	50% {
+		box-shadow: 0 0 0 8px #fbd75700;
+	}
 }
 
 .motivacional {
