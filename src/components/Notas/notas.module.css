@@ -193,6 +193,11 @@
 	padding: 10px 20px;
 	max-height: fit-content;
 }
+.footerButtons{
+	display: flex;
+	gap: 10px;
+	margin-left: auto;
+}
 
 .motivacional {
 	display: inline-block;

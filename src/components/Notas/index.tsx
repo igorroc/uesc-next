@@ -266,15 +266,25 @@ export default function Notas() {
 			</div>
 			<div className={styles.footerInfo}>
 				<p id={styles.finalValue} dangerouslySetInnerHTML={{ __html: message }}></p>
-				<Link
-					href={shareHref}
-					className={[styles.icon, styles.shareNotas].join(" ")}
-					aria-label="Compartilhar minhas notas"
-				>
-					<FiShare2 size={24} />
-				</Link>
-				<div className={[styles.icon, styles.resetNotas].join(" ")} onClick={handleReset}>
-					<BiReset size={32} />
+				<div className={styles.footerButtons}>
+                    {grades.length > 0 && emptyGradesCount === 0 && (
+                        <Link
+                            href={shareHref}
+                            className={[styles.icon, styles.shareNotas].join(" ")}
+                            aria-label="Compartilhar notas e pesos calculados"
+                            title="Gerar link para compartilhar suas notas e pesos com colegas"
+                        >
+                            <FiShare2 size={24} />
+                        </Link>
+                    )}
+                    <div
+                        className={[styles.icon, styles.resetNotas].join(" ")}
+                        onClick={handleReset}
+                        aria-label="Limpar todas as notas lançadas"
+                        title="Remover todas as notas e reiniciar a calculadora"
+                    >
+                        <BiReset size={32} />
+                    </div>
 				</div>
 			</div>
 		</div>
