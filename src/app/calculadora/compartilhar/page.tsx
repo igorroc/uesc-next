@@ -20,22 +20,22 @@ function calculateMessage(grades: CompactGrade[]) {
 	const weightedSum = grades.reduce((acc, [value, weight]) => acc + (value ?? 0) * weight, 0)
 
 	if (!totalWeight) {
-		return { media: 0, message: "Sem pesos validos para calcular a media." }
+		return { media: 0, message: "Sem pesos válidos para calcular a média." }
 	}
 
 	const media = weightedSum / totalWeight
 
 	if (media >= 9) {
-		return { media, message: "Genio detectado! Alguem entrega um trofeu agora." }
+		return { media, message: "Gênio detectado! Alguém entrega um troféu agora." }
 	}
 
 	if (media >= 7) {
-		return { media, message: "Aprovacao em modo turbo. Da ate pra respirar." }
+		return { media, message: "Aprovação em modo turbo. Dá até para respirar." }
 	}
 
 	return {
 		media,
-		message: "Situacao dramatica, mas ainda da pra virar com estrategia.",
+		message: "Situação dramática, mas ainda dá para virar com estratégia.",
 	}
 }
 
@@ -80,19 +80,19 @@ export default function CompartilharNotasPage() {
 			<div className={styles.backgroundGlow} aria-hidden="true" />
 			<section className={styles.card}>
 				<p className={styles.badge}>Modo compartilhado</p>
-				<h1>Boletim de guerra academica</h1>
+				<h1>Boletim de guerra acadêmica</h1>
 				<p className={styles.subtitle}>
-					Um colega compartilhou este panorama de notas e pesos com voce.
+					Um colega compartilhou este panorama de notas e pesos com você.
 				</p>
 
 				{hasError ? (
 					<p className={styles.warning}>
-						Nao foi possivel ler o link. Peca para gerar novamente na calculadora.
+						Não foi possível ler o link. Peça para gerar novamente na calculadora.
 					</p>
 				) : (
 					<>
 						<div className={styles.mediaBox}>
-							<span>Media parcial</span>
+							<span>Média parcial</span>
 							<strong>{media.toFixed(2)}</strong>
 							<p>{message}</p>
 						</div>
@@ -100,7 +100,7 @@ export default function CompartilharNotasPage() {
 						<ul className={styles.gradeList}>
 							{grades.map(([value, weight], index) => (
 								<li key={`${weight}-${index}`}>
-									<span>Avaliacao {index + 1}</span>
+									<span>Avaliação {index + 1}</span>
 									<span>Nota: {value ?? "?"}</span>
 									<span>Peso: {weight}</span>
 								</li>
