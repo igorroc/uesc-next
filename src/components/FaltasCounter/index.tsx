@@ -28,7 +28,7 @@ export default function FaltasCounter() {
 		<div className={styles.wrapper}>
 			<div className={styles.formGrid}>
 				<label>
-					Carga horaria total (aulas)
+					Carga horária total (aulas)
 					<input
 						type="number"
 						min={1}
@@ -89,11 +89,11 @@ export default function FaltasCounter() {
 				</p>
 
 				{remainingAbsences < 0 ? (
-					<p className={styles.danger}>Voce ja ultrapassou o limite de faltas.</p>
+					<p className={styles.danger}>Você já ultrapassou o limite de faltas.</p>
 				) : remainingAbsences === 0 ? (
-					<p className={styles.warning}>Voce chegou no limite maximo de faltas.</p>
+					<p className={styles.warning}>Você chegou ao limite máximo de faltas.</p>
 				) : (
-					<p className={styles.success}>Ainda ha margem de faltas. Se organize para nao estourar.</p>
+					<p className={styles.success}>Ainda há margem de faltas. Se organize para não estourar.</p>
 				)}
 			</div>
 		</div>
